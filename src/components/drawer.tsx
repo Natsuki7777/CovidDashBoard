@@ -2,6 +2,7 @@ import { Flex } from '@chakra-ui/react';
 import Link from 'next/link';
 
 // TODO: 都道府県のリンクの良い名前が思いつかないので、testにしといた
+// TODO: 選択されたらselectedをtrueにする
 // TODO: あとはデザインをいじるだけ
 
 const Drawer = () => {

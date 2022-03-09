@@ -8,7 +8,7 @@ const Layout = ({ children }: { children: any }) => {
       <Drawer />
       <Flex direction="column" w="full" h="100vh" px={12}>
         <Header />
-        <Flex>{children}</Flex>
+        {children}
       </Flex>
     </Flex>
   );

@@ -32,3 +32,15 @@ npm install
 ```shell
 npm run dev
 ```
+
+# パッケージの説明
+
+### react-chartjs-2
+
+- [chartjs サンプル](https://www.chartjs.org/docs/latest/samples/information.html)
+- [react-chartjs-2 ドキュメント](https://react-chartjs-2.js.org/)
+
+### Chakra-UI
+
+- すでにコンポーネントが作られててすごく便利
+- しかも結構デザインが良い

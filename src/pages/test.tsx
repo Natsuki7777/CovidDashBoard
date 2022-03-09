@@ -1,7 +1,7 @@
 import { Center } from '@chakra-ui/react';
 import { NextPage } from 'next';
 
-const Home: NextPage = () => {
+const Test: NextPage = () => {
   return (
     <Center w="full" h="full">
       test
@@ -9,4 +9,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Test;
