@@ -1,30 +1,43 @@
 import Preflist from '@/components/preflist';
-import { Center, Table, Tbody, Text, Th, Tr } from '@chakra-ui/react';
+import { ArrowDownIcon, ArrowUpIcon } from '@chakra-ui/icons';
+import { Table, Tbody, Text, Th, Tr } from '@chakra-ui/react';
 import { NextPage } from 'next';
+import { useState } from 'react';
 
 const Test: NextPage = () => {
+  const [flag, setFlag] = useState(true);
+  const onClickSort = () => {
+    setFlag(!flag);
+    console.log('ソート');
+  };
+
   return (
     <>
       <Text>各都道府県のコロナ感染状況</Text>
-      <Center w="full" h="full">
-        <Table variant="simple" colorScheme={'whiteAlpha'} fontSize="xs" borderRadius={'2xl'} mt={'-20'}>
-          <Tbody>
-            <Tr bgColor={'gray.300'}>
-              <Th>都道府県</Th>
-              <Th textAlign="center">合計陽性者数</Th>
-              <Th textAlign="center">合計重症者数</Th>
-              <Th textAlign="center">合計死亡者数</Th>
-              <Th></Th>
-            </Tr>
+      <Table variant="simple" colorScheme={'whiteAlpha'} fontSize="xs" borderRadius={'2xl'} my={8}>
+        <Tbody>
+          <Tr bgColor={'gray.300'}>
+            <Th onClick={onClickSort} _hover={{ cursor: 'pointer' }}>
+              都道府県
+              {flag ? <ArrowDownIcon ml={1} w={4} h={4} /> : <ArrowUpIcon ml={1} w={4} h={4} />}
+            </Th>
+            <Th textAlign="center" onClick={onClickSort} _hover={{ cursor: 'pointer' }}>
+              合計陽性者数
+            </Th>
+            <Th textAlign="center" onClick={onClickSort} _hover={{ cursor: 'pointer' }}>
+              合計重症者数
+            </Th>
+            <Th textAlign="center" onClick={onClickSort} _hover={{ cursor: 'pointer' }}>
+              合計死亡者数
+            </Th>
+            <Th></Th>
+          </Tr>
 
-            <Preflist name="北海道" total="3000" heavy="10" dead="200" />
-            <Preflist name="北海道" total="3000" heavy="10" dead="200" />
-            <Preflist name="北海道" total="3000" heavy="10" dead="200" />
-            <Preflist name="北海道" total="3000" heavy="10" dead="200" />
-            <Preflist name="北海道" total="3000" heavy="10" dead="200" />
-          </Tbody>
-        </Table>
-      </Center>
+          <Preflist name="北海道" slug="hokkaido" total={3000} heavy={10} dead={200} />
+          <Preflist name="青森県" slug="aomori" total={3} heavy={5} dead={2} />
+          <Preflist name="岩手県" slug="iwate" total={300} heavy={300} dead={200} />
+        </Tbody>
+      </Table>
     </>
   );
 };

@@ -1,28 +1,69 @@
 import { Box, Td, Tr } from '@chakra-ui/react';
+import { NextPage } from 'next';
+import Link from 'next/link';
 
-const Preflist = (props: any) => {
-  const { name, total, heavy, dead } = props;
+interface Props {
+  name: string;
+  slug: string;
+  total: number;
+  heavy: number;
+  dead: number;
+}
+
+const Preflist: NextPage<Props> = ({ ...props }: Props) => {
+  const colorTotal = (num: number) => {
+    if (num < 100) {
+      var color = 'green';
+    } else if (num < 500) {
+      var color = 'orange';
+    } else {
+      var color = 'red';
+    }
+    return color;
+  };
+  const colorHeavy = (num: number) => {
+    if (num < 100) {
+      var color = 'green';
+    } else if (num < 500) {
+      var color = 'orange';
+    } else {
+      var color = 'red';
+    }
+    return color;
+  };
+  const colorDead = (num: number) => {
+    if (num < 100) {
+      var color = 'green';
+    } else if (num < 500) {
+      var color = 'orange';
+    } else {
+      var color = 'red';
+    }
+    return color;
+  };
 
   return (
     <>
       <Tr bgColor={'white'} textAlign="center" borderBottom="gray">
-        <Td>{name}</Td>
+        <Td>{props.name}</Td>
         <Td textAlign="center">
-          <Box bgColor={'red.400'} w="auto" display={'inline-block'} textColor="white">
-            {total}
+          <Box bgColor={`${colorTotal(props.total)}.400`} w="auto" display={'inline-block'} textColor="white" px={1}>
+            {props.total}
           </Box>
         </Td>
         <Td textAlign="center">
-          <Box bgColor={'green.400'} w="auto" display={'inline-block'}>
-            {heavy}
+          <Box bgColor={`${colorHeavy(props.heavy)}.400`} w="auto" display={'inline-block'} textColor="white" px={1}>
+            {props.heavy}
           </Box>
         </Td>
         <Td textAlign="center">
-          <Box bgColor={'orange.400'} w="auto" display={'inline-block'}>
-            {dead}
+          <Box bgColor={`${colorDead(props.dead)}.400`} w="auto" display={'inline-block'} textColor="white" px={1}>
+            {props.dead}
           </Box>
         </Td>
-        <Td>aaa</Td>
+        <Td>
+          <Link href={`/detail/${props.slug}`}>icon</Link>
+        </Td>
       </Tr>
     </>
   );
