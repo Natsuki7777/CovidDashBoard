@@ -1,4 +1,5 @@
-import { Box, Td, Tr } from '@chakra-ui/react';
+import { InfoOutlineIcon } from '@chakra-ui/icons';
+import { Box, IconButton, Td, Tr } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import Link from 'next/link';
 
@@ -62,7 +63,9 @@ const Preflist: NextPage<Props> = ({ ...props }: Props) => {
           </Box>
         </Td>
         <Td>
-          <Link href={`/detail/${props.slug}`}>icon</Link>
+          <Link href={`/detail/${props.slug}`}>
+            <IconButton m={-3} aria-label="detail" icon={<InfoOutlineIcon />} bgColor="white" rounded="full" />
+          </Link>
         </Td>
       </Tr>
     </>

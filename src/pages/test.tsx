@@ -13,7 +13,7 @@ const Test: NextPage = () => {
 
   return (
     <>
-      <Text>各都道府県のコロナ感染状況</Text>
+      <Text fontWeight="bold">各都道府県のコロナ感染状況</Text>
       <Table variant="simple" fontSize="xs" my={8} colorScheme="gray">
         <Tbody>
           <Tr bgColor={'gray.300'}>
