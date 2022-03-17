@@ -14,7 +14,7 @@ const Test: NextPage = () => {
   return (
     <>
       <Text>各都道府県のコロナ感染状況</Text>
-      <Table variant="simple" colorScheme={'whiteAlpha'} fontSize="xs" borderRadius={'2xl'} my={8}>
+      <Table variant="simple" fontSize="xs" my={8} colorScheme="gray">
         <Tbody>
           <Tr bgColor={'gray.300'}>
             <Th onClick={onClickSort} _hover={{ cursor: 'pointer' }}>

@@ -44,7 +44,7 @@ const Preflist: NextPage<Props> = ({ ...props }: Props) => {
 
   return (
     <>
-      <Tr bgColor={'white'} textAlign="center" borderBottom="gray">
+      <Tr bgColor={'white'} textAlign="center">
         <Td>{props.name}</Td>
         <Td textAlign="center">
           <Box bgColor={`${colorTotal(props.total)}.400`} w="auto" display={'inline-block'} textColor="white" px={1}>
