@@ -1,8 +1,18 @@
 import ChartTest from '@/components/charttest';
+import { DataList, fetchPrefData } from '@/types/data';
 import { Box, Flex, Heading, Spacer } from '@chakra-ui/react';
 import { NextPage } from 'next';
 
-const Home: NextPage = () => {
+export const getStaticProps = async () => {
+  const japaneseData: DataList = await fetchPrefData('ALL');
+  return {
+    props: japaneseData,
+  };
+};
+
+const Home: NextPage<DataList> = ({ ...props }: DataList) => {
+  console.log(props);
+
   return (
     <Flex direction="column" w="full" h="full">
       <TopBar />
