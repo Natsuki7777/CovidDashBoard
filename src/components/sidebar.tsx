@@ -6,7 +6,7 @@ import { pages } from 'src/types/page';
 const Sidebar = () => {
   const router = useRouter();
   return (
-    <Flex bg="white" w="240px" h="full" direction="column" fontSize="md" fontWeight="bold" py="16">
+    <Flex bg="white" w="180px" h="full" direction="column" fontSize="md" fontWeight="bold" py="16">
       {pages.map((page) => {
         return <NavBox selected={page.route == router.pathname} text={page.text} route={page.route} />;
       })}
