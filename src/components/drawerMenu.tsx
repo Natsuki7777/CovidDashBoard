@@ -3,10 +3,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { pages } from 'src/types/page';
 
-const Sidebar = () => {
+const DrawerMenu = () => {
   const router = useRouter();
   return (
-    <Flex bg="white" w="240px" h="full" direction="column" fontSize="md" fontWeight="bold" py="16" display={{ base: 'none', md: 'block' }}>
+    //sidebarからw=100%に、displayを消しただけ　ページ遷移したら閉じるようにしたい
+    <Flex bg="white" w="100%" h="full" direction="column" fontSize="md" fontWeight="bold" py="16">
       {pages.map((page) => {
         return <NavBox selected={page.route == router.pathname} text={page.text} route={page.route} />;
       })}
@@ -35,4 +36,4 @@ const NavBox = ({ selected, text, route }: { selected: boolean; text: string; ro
   );
 };
 
-export default Sidebar;
+export default DrawerMenu;

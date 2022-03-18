@@ -1,5 +1,5 @@
 import { InfoOutlineIcon } from '@chakra-ui/icons';
-import { Box, IconButton, Td, Tr } from '@chakra-ui/react';
+import { Badge, IconButton, Td, Tr } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import Link from 'next/link';
 
@@ -48,19 +48,13 @@ const Preflist: NextPage<Props> = ({ ...props }: Props) => {
       <Tr bgColor={'white'} textAlign="center">
         <Td>{props.name}</Td>
         <Td textAlign="center">
-          <Box bgColor={`${colorTotal(props.total)}.400`} w="auto" display={'inline-block'} textColor="white" px={1}>
-            {props.total}
-          </Box>
+          <Badge colorScheme={colorTotal(props.total)}> {props.total}</Badge>
         </Td>
         <Td textAlign="center">
-          <Box bgColor={`${colorHeavy(props.heavy)}.400`} w="auto" display={'inline-block'} textColor="white" px={1}>
-            {props.heavy}
-          </Box>
+          <Badge colorScheme={colorHeavy(props.heavy)}> {props.heavy}</Badge>
         </Td>
         <Td textAlign="center">
-          <Box bgColor={`${colorDead(props.dead)}.400`} w="auto" display={'inline-block'} textColor="white" px={1}>
-            {props.dead}
-          </Box>
+          <Badge colorScheme={colorDead(props.dead)}> {props.dead}</Badge>
         </Td>
         <Td>
           <Link href={`/detail/${props.slug}`}>
