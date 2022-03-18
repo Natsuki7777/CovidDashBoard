@@ -4,7 +4,7 @@ import { NextPage } from 'next';
 
 const Home: NextPage = () => {
   return (
-    <Flex direction="column" w="full">
+    <Flex direction="column" w="full" h="full">
       <TopBar />
       <Flex w="full" direction="column">
         <ChartTest />

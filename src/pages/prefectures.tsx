@@ -1,10 +1,35 @@
 import Preflist from '@/components/preflist';
 import { ArrowDownIcon, ArrowUpIcon } from '@chakra-ui/icons';
-import { Table, Tbody, Text, Th, Tr } from '@chakra-ui/react';
+import { Box, Flex, Heading, Spacer, Table, Tbody, Th, Tr } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import { useState } from 'react';
 
-const Test: NextPage = () => {
+const Prefectures: NextPage = () => {
+  return (
+    <Flex direction="column" w="full" h="full">
+      <TopBar />
+      <Flex w="full" direction="column">
+        <PrefecturesTable />
+      </Flex>
+    </Flex>
+  );
+};
+
+const TopBar = () => {
+  return (
+    <Flex as="header" width="full" h="20" alignItems="center">
+      <Box>
+        <Heading as="h1" size="md">
+          各都道府県のコロナ感染状況
+        </Heading>
+      </Box>
+      <Spacer />
+      <Box></Box>
+    </Flex>
+  );
+};
+
+const PrefecturesTable = () => {
   const [data, setData] = useState([
     {
       name: '北海道',
@@ -84,38 +109,34 @@ const Test: NextPage = () => {
     });
     setData(array);
   };
-
   return (
-    <>
-      <Text fontWeight="bold">各都道府県のコロナ感染状況</Text>
-      <Table variant="simple" fontSize="xs" my={8} colorScheme="gray">
-        <Tbody>
-          <Tr bgColor={'gray.300'}>
-            <Th w="23%" h="43px" onClick={onClickSortPref} _hover={{ cursor: 'pointer' }}>
-              都道府県
-              {flagPref % 3 == 0 ? <></> : flagPref % 3 == 1 ? <ArrowDownIcon ml={1} w={4} h={4} /> : <ArrowUpIcon ml={1} w={4} h={4} />}
-            </Th>
-            <Th w={'23%'} textAlign="center" onClick={onClickSortTotal} _hover={{ cursor: 'pointer' }}>
-              合計陽性者数
-              {flagTotal % 3 == 0 ? <></> : flagTotal % 3 == 1 ? <ArrowDownIcon ml={1} w={4} h={4} /> : <ArrowUpIcon ml={1} w={4} h={4} />}
-            </Th>
-            <Th w={'23%'} textAlign="center" onClick={onClickSortHeavy} _hover={{ cursor: 'pointer' }}>
-              合計重症者数
-              {flagHeavy % 3 == 0 ? <></> : flagHeavy % 3 == 1 ? <ArrowDownIcon ml={1} w={4} h={4} /> : <ArrowUpIcon ml={1} w={4} h={4} />}
-            </Th>
-            <Th w={'23%'} textAlign="center" onClick={onClickSortDead} _hover={{ cursor: 'pointer' }}>
-              合計死亡者数
-              {flagDead % 3 == 0 ? <></> : flagDead % 3 == 1 ? <ArrowDownIcon ml={1} w={4} h={4} /> : <ArrowUpIcon ml={1} w={4} h={4} />}
-            </Th>
-            <Th></Th>
-          </Tr>
-          {data.map((pref: any) => (
-            <Preflist key={pref.id} name={pref.name} slug={pref.slug} total={pref.total} heavy={pref.heavy} dead={pref.dead} />
-          ))}
-        </Tbody>
-      </Table>
-    </>
+    <Table variant="simple" fontSize="xs" colorScheme="gray">
+      <Tbody>
+        <Tr bgColor={'gray.300'}>
+          <Th w="23%" h="43px" onClick={onClickSortPref} _hover={{ cursor: 'pointer' }}>
+            都道府県
+            {flagPref % 3 == 0 ? <></> : flagPref % 3 == 1 ? <ArrowDownIcon ml={1} w={4} h={4} /> : <ArrowUpIcon ml={1} w={4} h={4} />}
+          </Th>
+          <Th w={'23%'} textAlign="center" onClick={onClickSortTotal} _hover={{ cursor: 'pointer' }}>
+            合計陽性者数
+            {flagTotal % 3 == 0 ? <></> : flagTotal % 3 == 1 ? <ArrowDownIcon ml={1} w={4} h={4} /> : <ArrowUpIcon ml={1} w={4} h={4} />}
+          </Th>
+          <Th w={'23%'} textAlign="center" onClick={onClickSortHeavy} _hover={{ cursor: 'pointer' }}>
+            合計重症者数
+            {flagHeavy % 3 == 0 ? <></> : flagHeavy % 3 == 1 ? <ArrowDownIcon ml={1} w={4} h={4} /> : <ArrowUpIcon ml={1} w={4} h={4} />}
+          </Th>
+          <Th w={'23%'} textAlign="center" onClick={onClickSortDead} _hover={{ cursor: 'pointer' }}>
+            合計死亡者数
+            {flagDead % 3 == 0 ? <></> : flagDead % 3 == 1 ? <ArrowDownIcon ml={1} w={4} h={4} /> : <ArrowUpIcon ml={1} w={4} h={4} />}
+          </Th>
+          <Th></Th>
+        </Tr>
+        {data.map((pref: any) => (
+          <Preflist key={pref.id} name={pref.name} slug={pref.slug} total={pref.total} heavy={pref.heavy} dead={pref.dead} />
+        ))}
+      </Tbody>
+    </Table>
   );
 };
 
-export default Test;
+export default Prefectures;
