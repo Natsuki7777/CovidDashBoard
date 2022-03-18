@@ -11,9 +11,12 @@
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.1.7",
     "@chakra-ui/react": "^1.8.6",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
+    "@fontsource/open-sans": "^4.5.6",
+    "@fontsource/raleway": "^4.5.3",
     "chart.js": "^3.7.1",
     "firebase": "^9.6.8",
     "framer-motion": "^4.1.17",

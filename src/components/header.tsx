@@ -1,17 +1,15 @@
-import { Box, Button, Flex, Heading, Spacer } from '@chakra-ui/react';
+import { HamburgerIcon } from '@chakra-ui/icons';
+import { Box, Flex, Spacer, Text } from '@chakra-ui/react';
 
 const Header = () => {
   return (
-    <Flex as="header" width="full" py={4} alignItems="center">
-      <Box>
-        <Heading as="h1" size="md">
-          ホーム
-        </Heading>
-      </Box>
+    <Flex as="header" width="full" h={16} alignItems="center" bg="gray.900" px="4">
+      <Flex color="gray.100" h={8} alignItems="center">
+        <HamburgerIcon mr={4} />
+        <Text fontWeight="bold">COVIDVIEW</Text>
+      </Flex>
       <Spacer />
-      <Box>
-        <Button colorScheme="teal">ログイン</Button>
-      </Box>
+      <Box></Box>
     </Flex>
   );
 };
