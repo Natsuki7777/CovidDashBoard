@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <>
-      <Flex as="header" width="full" h={16} alignItems="center" bg="gray.900" px="4">
+      <Flex as="header" width="full" h="56px" alignItems="center" bg="gray.800" px="4">
         <Flex color="gray.100" h={8} alignItems="center">
           <IconButton
             _focus={{ outline: 'none' }}

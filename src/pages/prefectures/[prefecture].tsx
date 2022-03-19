@@ -1,6 +1,5 @@
-import ChartTest from '@/components/charttest';
-import { DataList, fetchPrefData } from '@/types/data';
 import { Prefecture, prefectureList } from '@/types/prefecture';
+import { DataList, fetchPrefData } from '@/types/prefectureData';
 import { Box, Flex, Heading, Spacer } from '@chakra-ui/react';
 import { NextPage } from 'next';
 
@@ -41,9 +40,7 @@ const Home: NextPage<DataList> = ({ ...props }: DataList) => {
   return (
     <Flex direction="column" w="full" h="full">
       <TopBar />
-      <Flex w="full" direction="column">
-        <ChartTest />
-      </Flex>
+      <Flex w="full" direction="column"></Flex>
     </Flex>
   );
 };

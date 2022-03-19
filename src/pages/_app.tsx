@@ -4,8 +4,6 @@ import type { AppProps } from 'next/app';
 import Layout from 'src/pages/layout';
 import 'src/styles/globals.css';
 
-// TODO: ページごとにヘッダーのテキストを分ける
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>

@@ -8,8 +8,8 @@ export interface Data {
 }
 
 export interface DataList {
-  severeCaseList: Data[];
   positiveCaseList: Data[];
+  severeCaseList: Data[];
   deathCaseList: Data[];
 }
 
@@ -22,12 +22,12 @@ export const DataFromDoc = (doc: QueryDocumentSnapshot<DocumentData>, pref: stri
 };
 
 export const fetchPrefData = async (pref: string): Promise<DataList> => {
-  const severeCaseList: Data[] = [];
   const positiveCaseList: Data[] = [];
+  const severeCaseList: Data[] = [];
   const deathCaseList: Data[] = [];
 
-  const severeCaseCollection = collection(db, 'severeCase');
   const positiveCaseCollection = collection(db, 'positiveCase');
+  const severeCaseCollection = collection(db, 'severeCase');
   const deathCaseCollection = collection(db, 'deathCase');
 
   // デフォルトではdocumentIDの昇順
@@ -35,21 +35,30 @@ export const fetchPrefData = async (pref: string): Promise<DataList> => {
   const positiveCaseQuery = query(positiveCaseCollection);
   const deathCaseQuery = query(deathCaseCollection);
 
-  const severeCaseSnapshot: QuerySnapshot<DocumentData> = await getDocs(severeCaseQuery);
-  severeCaseSnapshot.forEach((doc) => {
-    severeCaseList.push(DataFromDoc(doc, pref));
-  });
   const positiveCaseSnapshot: QuerySnapshot<DocumentData> = await getDocs(positiveCaseQuery);
   positiveCaseSnapshot.forEach((doc) => {
     positiveCaseList.push(DataFromDoc(doc, pref));
+  });
+  const severeCaseSnapshot: QuerySnapshot<DocumentData> = await getDocs(severeCaseQuery);
+  severeCaseSnapshot.forEach((doc) => {
+    severeCaseList.push(DataFromDoc(doc, pref));
   });
   const deathCaseSnapshot: QuerySnapshot<DocumentData> = await getDocs(deathCaseQuery);
   deathCaseSnapshot.forEach((doc) => {
     deathCaseList.push(DataFromDoc(doc, pref));
   });
+
+  // 死亡者数は累計なので、一日当たりに換算する
+  let lastValue: number = 0;
+  deathCaseList.forEach((data: Data) => {
+    const currentValue = data.value;
+    data.value = currentValue - lastValue;
+    lastValue = currentValue;
+  });
+
   return {
-    severeCaseList: severeCaseList,
     positiveCaseList: positiveCaseList,
+    severeCaseList: severeCaseList,
     deathCaseList: deathCaseList,
   };
 };
